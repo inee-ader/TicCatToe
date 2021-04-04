@@ -1,7 +1,7 @@
 import '../styles/Box.css';
 import React, { Component } from 'react';
 
-class box extends Component {
+class Box extends Component {
 
     render() {
         return (
@@ -12,6 +12,6 @@ class box extends Component {
     }
 }
 
-export default box;
+export default Box;
 
 
