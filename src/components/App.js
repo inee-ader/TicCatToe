@@ -1,7 +1,7 @@
 import '../styles/App.css';
 import { useState, useEffect } from 'react';
 import React from 'react';
-import Box from './Box';
+import Box from './Box.js';
 import {Winning} from './Winning';
 import { Howl, Howler } from 'howler';
 import meow1 from '../audio/meow1.mp3';
