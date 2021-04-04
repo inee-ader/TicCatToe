@@ -6,9 +6,11 @@ import {Winning} from './components/Winning';
 import { Howl, Howler } from 'howler';
 import meow1 from './audio/meow1.mp3';
 import meow2 from './audio/meow2.mp3';
+import purring from './audio/purring.mp3';
 
 const cat1 = [{sound: meow1}];
 const cat2 = [{sound: meow2}];
+const cat3 = [{sound: purring}];
 
 const App = () => {
 
@@ -17,13 +19,6 @@ const App = () => {
         src
     })
     sound.play()
-  }
-
-  const soundPlay2 = (src) => {
-    const sound2 = new Howl({
-      src
-    })
-    sound2.play()
   }
 
   const [board, setBoard] = useState(['', '', '', '', '', '', '', '', '']);
@@ -68,17 +63,6 @@ const App = () => {
     }
   }
 
-
-// renderNameSound = () => {
-//     return helloIntro.map((soundObj, index) => {
-//         return(
-//             <h1 key={index} onMouseEnter={() => this.soundPlay(soundObj.sound)}>
-//             INÉE ADER
-//             </h1>
-//         )
-//     })
-// }
-
 const checkWin = () => {
   Winning.forEach((currentPattern) => {
     const firstPlayer = board[currentPattern[0]];
@@ -91,6 +75,9 @@ const checkWin = () => {
     })
     if (foundWinningPattern) {
       setResult({winner: player, state: "won"})
+      return cat3.map((soundObj, i) => {
+        soundPlay(soundObj.sound)
+      })
     }
   });
 }
@@ -114,6 +101,7 @@ const restartGame = () => {
 
   return (
     <div className='app'>
+      <h1 className='board__h'> TIC - CAT - TOE </h1> 
       <div className='board'>
         <div className='board__row'>
           <Box value={board[0]} chooseBox={() => {chooseBox(0)}}/>
