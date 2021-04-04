@@ -7,6 +7,7 @@ import { Howl, Howler } from 'howler';
 import meow1 from './audio/meow1.mp3';
 import meow2 from './audio/meow2.mp3';
 import purring from './audio/purring.mp3';
+import kitten from './styles/kitten.jpg';
 
 const cat1 = [{sound: meow1}];
 const cat2 = [{sound: meow2}];
@@ -101,7 +102,10 @@ const restartGame = () => {
 
   return (
     <div className='app'>
-      <h1 className='board__h'> TIC - CAT - TOE </h1> 
+      <div className='app__heading'>
+        <img className='app__kitten' src={kitten} alt='kitten'></img>
+        <h1 className='app__h'> TIC - CAT - TOE </h1> 
+      </div>
       <div className='board'>
         <div className='board__row'>
           <Box value={board[0]} chooseBox={() => {chooseBox(0)}}/>
