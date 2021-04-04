@@ -1,13 +1,13 @@
-import './styles/App.css';
+import '../styles/App.css';
 import { useState, useEffect } from 'react';
 import React from 'react';
-import Box from './components/Box';
-import {Winning} from './components/Winning';
+import Box from './Box';
+import {Winning} from './Winning';
 import { Howl, Howler } from 'howler';
-import meow1 from './audio/meow1.mp3';
-import meow2 from './audio/meow2.mp3';
-import purring from './audio/purring.mp3';
-import kitten from './styles/kitten.jpg';
+import meow1 from '../audio/meow1.mp3';
+import meow2 from '../audio/meow2.mp3';
+import purring from '../audio/purring.mp3';
+import kitten from '../styles/kitten.jpg';
 
 const cat1 = [{sound: meow1}];
 const cat2 = [{sound: meow2}];
