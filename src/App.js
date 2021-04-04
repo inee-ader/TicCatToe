@@ -1,11 +1,54 @@
 import './styles/App.css';
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import Box from './components/Box';
+import {Winning} from './components/Winning';
+import { Howl, Howler } from 'howler';
+import meow1 from './audio/meow1.mp3';
+import meow2 from './audio/meow2.mp3';
+
+const cat1 = [{sound: meow1}];
+const cat2 = [{sound: meow2}];
 
 const App = () => {
+
+  const soundPlay = (src) => {
+    const sound = new Howl({
+        src
+    })
+    sound.play()
+  }
+
+  const soundPlay2 = (src) => {
+    const sound2 = new Howl({
+      src
+    })
+    sound2.play()
+  }
+
   const [board, setBoard] = useState(['', '', '', '', '', '', '', '', '']);
-  const [player, setPlayer] = useState('X');
+  const [player, setPlayer] = useState('O');
+  const [result, setResult] = useState({winner: 'none', state: 'none'})
+
+  useEffect(() => {
+    checkTie();
+    checkWin();
+
+    if (player == 'X') {
+      setPlayer('O')
+    } else {
+      setPlayer('X')
+    }
+
+  }, [board]);
+
+  useEffect(() => {
+    if(result.state != 'none'){
+      alert(`Game finished! Winning player: ${result.winner}`)
+      restartGame();
+    }
+  }, [result]);
+
   const chooseBox = (box) => {
     setBoard(board.map((value, i) => {
       if(i == box && value == '') {
@@ -14,12 +57,60 @@ const App = () => {
       return value; 
       })
     )
-    if (player == 'X') {
-      setPlayer('O')
+    if(player == 'X'){
+      return cat1.map((soundObj, i) => {
+        soundPlay(soundObj.sound)
+      })
     } else {
-      setPlayer('X')
+      return cat2.map((soundObj, i) => {
+        soundPlay(soundObj.sound)
+      })
     }
   }
+
+
+// renderNameSound = () => {
+//     return helloIntro.map((soundObj, index) => {
+//         return(
+//             <h1 key={index} onMouseEnter={() => this.soundPlay(soundObj.sound)}>
+//             INÉE ADER
+//             </h1>
+//         )
+//     })
+// }
+
+const checkWin = () => {
+  Winning.forEach((currentPattern) => {
+    const firstPlayer = board[currentPattern[0]];
+    if (firstPlayer == '') return;
+    let foundWinningPattern = true;
+    currentPattern.forEach((i) => {
+      if (board[i] != firstPlayer) {
+        foundWinningPattern = false
+      }
+    })
+    if (foundWinningPattern) {
+      setResult({winner: player, state: "won"})
+    }
+  });
+}
+
+const checkTie = () => {
+  let filled = true; 
+  board.forEach((box) => {
+    if (box == '') {
+      filled = false
+    }
+  })
+  if(filled) {
+    setResult({winner: 'No one--Tied!', state: 'Tie!'})
+  }
+}
+
+const restartGame = () => {
+  setBoard(['', '', '', '', '', '', '', '', ''])
+  setPlayer('O')
+}
 
   return (
     <div className='app'>
