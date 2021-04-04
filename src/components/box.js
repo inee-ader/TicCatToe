@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import '../styles/Box.css';
 
-const box = ({value, onClick}) => {
+const box = ({ value, chooseBox }) => {
     return (
-        <button className='box' onClick={onClick}>
+        <div className='box' onClick={chooseBox}>
             {value}
-        </button>
+        </div>
     );
 }
 
