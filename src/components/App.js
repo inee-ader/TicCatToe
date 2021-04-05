@@ -35,7 +35,6 @@ const App = () => {
     } else {
       setPlayer('X')
     }
-
   }, [board]);
 
   useEffect(() => {
