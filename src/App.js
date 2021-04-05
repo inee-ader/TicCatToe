@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import {Winning} from './Winning';
 import Box from './Box';
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import meow1 from './audio/meow1.mp3';
 import meow2 from './audio/meow2.mp3';
 import purring from './audio/purring.mp3';
@@ -27,18 +27,18 @@ const App = () => {
   const [result, setResult] = useState({winner: 'none', state: 'none'})
 
   useEffect(() => {
-    checkTie();
-    checkWin();
-
-    if (player == 'X') {
+    
+    if (player === 'X') {
       setPlayer('O')
     } else {
       setPlayer('X')
     }
+    checkTie();
+    checkWin();
   }, [board]);
 
   useEffect(() => {
-    if(result.state != 'none'){
+    if(result.state !== 'none'){
       alert(`Game finished! Winning player: ${result.winner}`)
       restartGame();
     }
@@ -54,11 +54,11 @@ const App = () => {
     )
     if(player === 'X'){
       return cat1.map((soundObj, i) => {
-        soundPlay(soundObj.sound)
+        return soundPlay(soundObj.sound)
       })
     } else {
       return cat2.map((soundObj, i) => {
-        soundPlay(soundObj.sound)
+        return soundPlay(soundObj.sound)
       })
     }
   }
@@ -76,7 +76,7 @@ const checkWin = () => {
     if (foundWinningPattern) {
       setResult({winner: player, state: "won"})
       return cat3.map((soundObj, i) => {
-        soundPlay(soundObj.sound)
+        return soundPlay(soundObj.sound)
       })
     }
   });
