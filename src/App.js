@@ -34,14 +34,14 @@ const App = () => {
     }
     checkTie();
     checkWin();
-  }, [board,player]);
+  }, [board,player, result]);
 
   useEffect(() => {
     if(result.state !== 'none'){
       alert(`Game finished! Winning player: ${result.winner}`)
       restartGame();
     }
-  }, [result]);
+  }, [result, board, player]);
 
   const chooseBox = (box) => {
     setBoard(board.map((value, i) => {
