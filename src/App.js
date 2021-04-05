@@ -26,7 +26,7 @@ const App = () => {
   const [player, setPlayer] = useState('O');
   const [result, setResult] = useState({winner: 'none', state: 'none'})
   
-  useEffect(() => {
+  useEffect((board, player) => {
     if (player === 'X') {
       setPlayer('O')
     } else {
