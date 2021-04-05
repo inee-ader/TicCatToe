@@ -1,4 +1,4 @@
-import '../styles/Box.css';
+import './styles/Box.css';
 import React, { Component } from 'react';
 
 class Box extends Component {
