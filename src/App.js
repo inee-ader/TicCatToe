@@ -46,13 +46,13 @@ const App = () => {
 
   const chooseBox = (box) => {
     setBoard(board.map((value, i) => {
-      if(i == box && value == '') {
+      if(i === box && value === '') {
         return player
       }
       return value; 
       })
     )
-    if(player == 'X'){
+    if(player === 'X'){
       return cat1.map((soundObj, i) => {
         soundPlay(soundObj.sound)
       })
@@ -66,10 +66,10 @@ const App = () => {
 const checkWin = () => {
   Winning.forEach((currentPattern) => {
     const firstPlayer = board[currentPattern[0]];
-    if (firstPlayer == '') return;
+    if (firstPlayer === '') return;
     let foundWinningPattern = true;
     currentPattern.forEach((i) => {
-      if (board[i] != firstPlayer) {
+      if (board[i] !== firstPlayer) {
         foundWinningPattern = false
       }
     })
@@ -85,7 +85,7 @@ const checkWin = () => {
 const checkTie = () => {
   let filled = true; 
   board.forEach((box) => {
-    if (box == '') {
+    if (box === '') {
       filled = false
     }
   })
