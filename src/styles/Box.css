@@ -1,13 +1,13 @@
 
 .box {
-    flex: 33%;
-    height: 90%; 
     border: 10px solid black; 
+    color: black;
     cursor: pointer;
     display: grid;
-    place-items: center;
+    flex: 33%;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 50px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    height: 90%; 
+    place-items: center;
 }
