@@ -34,7 +34,7 @@ const App = () => {
     }
     checkTie();
     checkWin();
-  }, [player, board, checkTie(), checkWin()]);
+  }, [board]);
 
   useEffect(() => {
     if(result.state !== 'none'){
