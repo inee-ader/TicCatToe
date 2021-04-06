@@ -26,7 +26,7 @@ const App = () => {
   const [player, setPlayer] = useState('O');
   const [result, setResult] = useState({winner: 'none', state: 'none'})
   
-  useEffect(([board]) => {
+  useEffect(() => {
     if (player === 'X') {
       setPlayer('O')
     } else {
@@ -34,9 +34,9 @@ const App = () => {
     }
     checkTie();
     checkWin();
-  }, [board]);
+  }, [player, board]);
 
-  useEffect(([result]) => {
+  useEffect(() => {
     if(result.state !== 'none'){
       alert(`Game finished! Winning player: ${result.winner}`)
       restartGame();
